@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoloryWPF", "KoloryWPF\KoloryWPF.csproj", "{B3D147E5-8002-4476-8941-CF647B4B6F7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoloryMAUI", "KoloryMAUI\KoloryMAUI.csproj", "{2DA64F2C-AE7E-4A32-A8E4-959EB55E0F6F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3D147E5-8002-4476-8941-CF647B4B6F7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3D147E5-8002-4476-8941-CF647B4B6F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3D147E5-8002-4476-8941-CF647B4B6F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3D147E5-8002-4476-8941-CF647B4B6F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DA64F2C-AE7E-4A32-A8E4-959EB55E0F6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DA64F2C-AE7E-4A32-A8E4-959EB55E0F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DA64F2C-AE7E-4A32-A8E4-959EB55E0F6F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2DA64F2C-AE7E-4A32-A8E4-959EB55E0F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DA64F2C-AE7E-4A32-A8E4-959EB55E0F6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DA64F2C-AE7E-4A32-A8E4-959EB55E0F6F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4CA9089-8D51-4A97-8E91-05886BFE37EC}
+	EndGlobalSection
+EndGlobal
