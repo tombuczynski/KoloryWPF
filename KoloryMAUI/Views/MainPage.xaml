@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:KoloryMAUI.ViewModels"
+             x:Class="KoloryMAUI.Views.MainPage"
+             >
+    <ContentPage.Resources>
+        <viewModels:RGBToBrushConverter x:Key="rgb2brush"/>
+        <viewModels:Scale1To255Converter x:Key="scale1to255"/>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewModels:RectColorViewModel/>
+    </ContentPage.BindingContext>
+    
+    <Grid RowDefinitions="*,Auto,Auto,Auto,Auto" ColumnDefinitions="*,48" RowSpacing="20" Padding="15">
+        <Rectangle Grid.Row="0" Grid.ColumnSpan="2" x:Name="FilledRectangle" Stroke="Black">
+            <Rectangle.Fill>
+                <MultiBinding Mode="OneWay" Converter="{StaticResource rgb2brush}">
+                    <Binding Path="R"/>
+                    <Binding Path="G"/>
+                    <Binding Path="B"/>
+                </MultiBinding>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Slider x:Name="SliderR" Grid.Row="1" Value="{Binding R, Mode=TwoWay}" />
+        <!--<Label x:Name="LabelValR" Grid.Row="1" Grid.Column="1" 
+               VerticalTextAlignment="Center" HorizontalTextAlignment="End" 
+               Text="{Binding Path=R, Mode=OneWay, StringFormat='{0:F2}'}" TextColor="{AppThemeBinding Default=Red, Dark=LightPink}" FontAttributes="Bold" />-->
+        <Label x:Name="LabelValR" Grid.Row="1" Grid.Column="1" 
+               VerticalTextAlignment="Center" HorizontalTextAlignment="End" 
+               Text="{Binding Path=R, Mode=OneWay, Converter={StaticResource scale1to255}}" TextColor="{AppThemeBinding Default=Red, Dark=LightPink}" FontAttributes="Bold" />
+        <Slider x:Name="SliderG" Grid.Row="2" Value="{Binding G, Mode=TwoWay}"/>
+        <Label x:Name="LabelValG" Grid.Row="2" Grid.Column="1" 
+               VerticalTextAlignment="Center" HorizontalTextAlignment="End" 
+               Text="{Binding Path=G, Mode=OneWay, Converter={StaticResource scale1to255}}" TextColor="{AppThemeBinding Default=Green, Dark=LightGreen}" FontAttributes="Bold" />
+        <Slider x:Name="SliderB" Grid.Row="3" Value="{Binding B, Mode=TwoWay}"/>
+        <Label x:Name="LabelValB" Grid.Row="3" Grid.Column="1" 
+               VerticalTextAlignment="Center" HorizontalTextAlignment="End" 
+               Text="{Binding Path=B, Mode=OneWay, Converter={StaticResource scale1to255}}" TextColor="{AppThemeBinding Default=Blue, Dark=LightBlue}"  FontAttributes="Bold" />
+        <Button Text="Reset" WidthRequest="100" HorizontalOptions="Start" Grid.Row="4" Command="{Binding ResetColorCmd}" />
+    </Grid>
+
+</ContentPage>
