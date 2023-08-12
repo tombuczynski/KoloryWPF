@@ -26,43 +26,57 @@ namespace KoloryMAUI
 
         private void SaveSettings()
         {
-            IFormatProvider f = CultureInfo.InvariantCulture;
+            //IFormatProvider f = CultureInfo.InvariantCulture;
 
-            XDocument document = new XDocument(
-                new XComment($"Last saved: {DateTime.Now.ToString(f)}"),
-                new XElement("settings",
-                    new XElement("r", Settings.RectColor.R.ToString(f)),
-                    new XElement("g", Settings.RectColor.G.ToString(f)),
-                    new XElement("b", Settings.RectColor.B.ToString(f))
-                    )
-                );
+            //XDocument document = new XDocument(
+            //    new XComment($"Last saved: {DateTime.Now.ToString(f)}"),
+            //    new XElement("settings",
+            //        new XElement("r", Settings.RectColor.R.ToString(f)),
+            //        new XElement("g", Settings.RectColor.G.ToString(f)),
+            //        new XElement("b", Settings.RectColor.B.ToString(f))
+            //        )
+            //    );
 
-            document.Save(SettingsFilePath);
+            //document.Save(SettingsFilePath);
+
+            Preferences.Default.Set("r", Settings.RectColor.R);
+            Preferences.Default.Set("g", Settings.RectColor.G);
+            Preferences.Default.Set("b", Settings.RectColor.B);
         }
 
         private void LoadSettings()
         {
-            IFormatProvider f = CultureInfo.InvariantCulture;
+            //IFormatProvider f = CultureInfo.InvariantCulture;
 
-            if (!File.Exists(SettingsFilePath))
-                return;
+            //if (!File.Exists(SettingsFilePath))
+            //    return;
 
-            try
+            //try
+            //{
+            //    XDocument document = XDocument.Load(SettingsFilePath);
+
+            //    Settings.RectColor = new Models.FillColor(
+            //        double.Parse(document.Root.Element("r").Value, f),
+            //        double.Parse(document.Root.Element("g").Value, f),
+            //        double.Parse(document.Root.Element("b").Value, f));
+
+            //}
+            //catch
+            //{
+            //    return;
+            //}
+
+            //Settings.IsValid = true;
+
+            if (Preferences.Default.ContainsKey("r"))
             {
-                XDocument document = XDocument.Load(SettingsFilePath);
-
                 Settings.RectColor = new Models.FillColor(
-                    double.Parse(document.Root.Element("r").Value, f),
-                    double.Parse(document.Root.Element("g").Value, f),
-                    double.Parse(document.Root.Element("b").Value, f));
+                    Preferences.Default.Get("r", 0.0),
+                    Preferences.Default.Get("g", 0.0),
+                    Preferences.Default.Get("b", 0.0));
 
+                Settings.IsValid = true;
             }
-            catch
-            {
-                return;
-            }
-
-            Settings.IsValid = true;
         }
 
         protected override Window CreateWindow(IActivationState activationState)

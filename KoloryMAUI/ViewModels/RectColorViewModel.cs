@@ -15,7 +15,8 @@ namespace KoloryMAUI.ViewModels
         public RectColorViewModel()
         {
             _model = ((App)Application.Current).Settings.RectColor;
-            ResetColorCmd = new ResetColorCommand(this);
+            //ResetColorCmd = new ResetColorCommand(this);
+            ResetColorCmd = new CommandRelay(this, p => R = G = B = 0, p => R != 0 || G != 0 || B != 0);
         }
 
         #region Properties

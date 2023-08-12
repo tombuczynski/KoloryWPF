@@ -9,12 +9,12 @@ namespace KoloryMAUI.ViewModels
 {
     internal class ResetColorCommand : ICommand
     {
-        private RectColorViewModel rectColorViewModel;
+        private RectColorViewModel _rectColorViewModel;
         private bool? _lastCanExcuteResult = null;
 
         public ResetColorCommand(RectColorViewModel rectColorViewModel)
         {
-            this.rectColorViewModel = rectColorViewModel;
+            this._rectColorViewModel = rectColorViewModel;
 
             rectColorViewModel.PropertyChanged += RectColorViewModel_PropertyChanged;
         }
@@ -35,13 +35,13 @@ namespace KoloryMAUI.ViewModels
 
         public event EventHandler CanExecuteChanged;
 
-        public bool CanExecute(object parameter) => rectColorViewModel.R > 0 || rectColorViewModel.G > 0 || rectColorViewModel.B > 0;
+        public bool CanExecute(object parameter) => _rectColorViewModel.R > 0 || _rectColorViewModel.G > 0 || _rectColorViewModel.B > 0;
 
         public void Execute(object parameter)
         {
-            rectColorViewModel.R = 0;
-            rectColorViewModel.G = 0;
-            rectColorViewModel.B = 0;
+            _rectColorViewModel.R = 0;
+            _rectColorViewModel.G = 0;
+            _rectColorViewModel.B = 0;
         }
 
     }
