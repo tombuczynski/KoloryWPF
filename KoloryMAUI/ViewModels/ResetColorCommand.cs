@@ -10,7 +10,7 @@ namespace KoloryMAUI.ViewModels
     internal class ResetColorCommand : ICommand
     {
         private RectColorViewModel _rectColorViewModel;
-        private bool? _lastCanExcuteResult = null;
+        private bool? _lastCanExecuteResult = null;
 
         public ResetColorCommand(RectColorViewModel rectColorViewModel)
         {
@@ -25,12 +25,12 @@ namespace KoloryMAUI.ViewModels
 
             bool result = CanExecute(null);
 
-            if (result != _lastCanExcuteResult)
+            if (result != _lastCanExecuteResult)
             {
                 handler?.Invoke(this, EventArgs.Empty);
             }
 
-            _lastCanExcuteResult = result;
+            _lastCanExecuteResult = result;
         }
 
         public event EventHandler CanExecuteChanged;

@@ -11,7 +11,7 @@ namespace KoloryMAUI.ViewModels
     internal class CommandRelay : ICommand
     {
         private INotifyPropertyChanged _viewModel;
-        private bool? _lastCanExcuteResult = null;
+        private bool? _lastCanExecuteResult = null;
 
         private Action<object> _execute;
         private Predicate<object> _canExecute;
@@ -23,24 +23,24 @@ namespace KoloryMAUI.ViewModels
 
             _viewModel = viewModel;
 
-            _viewModel.PropertyChanged += RectColorViewModel_PropertyChanged;
+            _viewModel.PropertyChanged += PropertyChanged;
 
             _execute = execute;
             _canExecute = canExecute;
         }
 
-        private void RectColorViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             var handler = CanExecuteChanged;
 
             bool result = CanExecute(null);
 
-            if (result != _lastCanExcuteResult)
+            if (result != _lastCanExecuteResult)
             {
                 handler?.Invoke(this, EventArgs.Empty);
             }
 
-            _lastCanExcuteResult = result;
+            _lastCanExecuteResult = result;
         }
 
         public event EventHandler CanExecuteChanged;
